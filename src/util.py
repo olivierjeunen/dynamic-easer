@@ -166,6 +166,9 @@ def incremental_updates(df, X_init, G_init, S_init, init_ts, num_days, update_mi
         n_users = new_df.session.nunique() 
         n_items = new_df.item.nunique()
         n_views = len(new_df)
+            
+        # Start timer
+        start_overall = time.perf_counter()
         
         # DynGram -- very fast
         X_curr, G_diff = dyngram(new_df, X_curr)
@@ -191,8 +194,6 @@ def incremental_updates(df, X_init, G_init, S_init, init_ts, num_days, update_mi
             # Update progress-bar
             pbar.set_postfix({'|P|': n_views, '|U|': n_users, '|I|': n_items, 'rank': k})
 
-            # Start timer
-            start_overall = time.perf_counter()
 
             # Update S through dynEASEr
             # Avoid function call because it triggers garbage collection for temporary variables, skewing runtime
