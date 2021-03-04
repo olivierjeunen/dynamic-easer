@@ -14,8 +14,8 @@ if __name__=='__main__':
     parser.add_argument('-data', '--data_path', type = str, help = 'Number of days to incrementally update')
     parser.add_argument('-days', '--num_days', type = int, help = 'Number of days to incrementally update', default = 6 * 31)
     parser.add_argument('-mins', '--update_minutes', type = int, help = 'Number of minutes between incremental updates', default = 60 * 48) 
-    parser.add_argument('-u_k', '--user_k', type = int, help = 'Number of minimal occurrences to keep user', default = 15)#3)
-    parser.add_argument('-i_k', '--item_k', type = int, help = 'Number of minimal occurrences to keep item', default = 15)#3)
+    parser.add_argument('-u_k', '--user_k', type = int, help = 'Number of minimal occurrences to keep user', default = 3)
+    parser.add_argument('-i_k', '--item_k', type = int, help = 'Number of minimal occurrences to keep item', default = 3)
     args = parser.parse_args()    
 
     # Parse clicks and deduplicate
